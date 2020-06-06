@@ -39,6 +39,6 @@
 :local existingWanSubnet [/ip firewall address-list get $wanSubnet address];
 :local newWanSubnet [/ip address get [find interface=$interfaceName] network];
 :set $newWanSubnet ($newWanSubnet . $newNetmask);
-:if ($existingWanSubnet != $newWanSubnet do= {
+:if ($existingWanSubnet != $newWanSubnet) do={
   /ip firewall address-list set $wanSubnet address=$newWanSubnet;
 }
